@@ -1,16 +1,19 @@
 {
-  "name": "karma-json-fixtures-preprocessor",
+  "name": "karma-cson-fixtures-preprocessor",
   "version": "0.0.1",
-  "description": "A Karma plugin to compile JSON files and make them accessible from Javascript code",
+  "description": "A Karma plugin to compile CSON files and make them accessible from Javascript code",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:dmitriiabramov/karma-json-fixtures-preprocessor.git"
+    "url": "git@github.com:kmdavis/karma-cson-fixtures-preprocessor.git"
   },
   "keywords": [
+    "cson",
+    "coffee",
+    "coffeescript",
     "json",
     "karma",
     "preprocessor",
@@ -18,10 +21,14 @@
     "fixtures",
     "test"
   ],
-  "author": "Dmitrii Abramov",
+  "authors": ["Kevan Davis", "Dmitrii Abramov"]
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dmitriiabramov/karma-json-fixtures-preprocessor/issues"
+    "url": "https://github.com/kmdavis/karma-cson-fixtures-preprocessor/issues"
   },
-  "homepage": "https://github.com/dmitriiabramov/karma-json-fixtures-preprocessor"
+  "homepage": "https://github.com/kmdavis/karma-cson-fixtures-preprocessor",
+  "dependencies": {
+    "coffee-script": "1.8.x",
+    "cson": "1.6.x"
+  }
 }

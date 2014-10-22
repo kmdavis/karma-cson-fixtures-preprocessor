@@ -1,3 +1,4 @@
+require("coffee-script");
 module.exports = {
-  'preprocessor:json_fixtures': ['factory', require('./json_fixtures')]
+  "preprocessor:cson_fixtures": ["factory", require("./cson_fixtures")]
 };

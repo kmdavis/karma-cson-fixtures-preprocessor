@@ -1,40 +1,36 @@
-karma-json-fixtures-preprocessor
+karma-cson-fixtures-preprocessor
 ================================
 
-##### Preprocessor for converting .json files into .js files and making them accessible from karma test environment
+##### Preprocessor for converting .cson files into .js files and making them accessible from karma test environment
 
 ## Installation
 ```json
 {
     "devDependencies": {
         "karma": "~0.12.1",
-        "karma-json-fixtures-preprocessor": "0.0.0"
+        "karma-cson-fixtures-preprocessor": "0.0.x"
     }
 }
 ```
 
 ## Configuration
-```js
+```coffee
 // karma.conf.js
-module.exports = function(config) {
+module.exports = (config) ->
   config.set({
-    preprocessors: {
-      './fixtures/**/*.json': ['json_fixtures']
-    },
-
+    preprocessors:
+      "./fixtures/**/*.cson": ["cson_fixtures"]
     files: [
-      './fixtures/**/*.json'
-    ],
-    jsonFixturesPreprocessor: {
+      "./fixtures/**/*.cson"
+    ]
+    csonFixturesPreprocessor:
       // strip this from the file path \ fixture name
-      stripPrefix: 'test/fixtures',
+      stripPrefix: "test/fixtures",
       // strip this to the file path \ fixture name
-      prependPrefix: 'mock/',
+      prependPrefix: "mock/",
       // change the global fixtures variable name
-      variableName: '__mocks__'
-    }
-  });
-};
+      variableName: "__mocks__"
+
 ```
 
 ## How it works
@@ -43,13 +39,13 @@ Preprocessor requires .json files and converts them into .js files by storing js
 
 the following file:
 `./fixtures/test.json`
-```json
+```cson
 {
-    "a": "test"
+    a: "test"
 }
 ```
 will be accessible in your test environment:
 ```js
-var fixture = window.__fixtures__['fixtures/test'];
+var fixture = window.__fixtures__["fixtures/test"];
 fixture["a"] // => 'test'
 ```
