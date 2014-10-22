@@ -10,14 +10,14 @@ createCsonFixturesPreprocessor = (logger, basePath, config = {}) ->
   CSON = require "cson-safe"
 
   stripPrefix = ///^#{config.stripPrefix or ""}///
-  stripExtension = ///.#{config.extension or "cson"}$///
+  stripExtension = ///\.#{config.extension or "cson"}$///
   prependPrefix = config.prependPrefix or ""
 
   (content, file, done) ->
     log.debug """Processing "#{file.originalPath}"."""
     fixtureName = file.originalPath
-        .replace "#{basePath}/", ""
-        .replace stripExtension, ""
+      .replace( "#{basePath}/", "" )
+      .replace stripExtension, ""
 
     # Set the template
     template = getTemplate config.variableName
