@@ -21,7 +21,7 @@
     "fixtures",
     "test"
   ],
-  "authors": ["Kevan Davis", "Dmitrii Abramov"]
+  "authors": ["Kevan Davis", "Dmitrii Abramov"],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kmdavis/karma-cson-fixtures-preprocessor/issues"
