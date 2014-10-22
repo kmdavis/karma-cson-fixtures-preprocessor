@@ -39,7 +39,7 @@ Preprocessor requires .json files and converts them into .js files by storing js
 
 the following file:
 `./fixtures/test.json`
-```cson
+```coffee
 {
     a: "test"
 }
