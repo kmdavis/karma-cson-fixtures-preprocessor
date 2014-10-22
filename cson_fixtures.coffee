@@ -1,6 +1,4 @@
 module.exports = ( ->
-  util = require "util"
-
   getTemplate = (varName="__fixtures__") ->
     """
     window.#{varName} = window.#{varName} || {};
@@ -8,6 +6,8 @@ module.exports = ( ->
     """
 
   createCsonFixturesPreprocessor = (basePath, config={}) ->
+    util = require "util"
+    CSON = require "cson"
 
     stripPrefix = ///^#{config.stripPrefix || ""}///
     prependPrefix = config.prependPrefix || ""
@@ -24,6 +24,8 @@ module.exports = ( ->
       fixtureName = prependPrefix + fixtureName.replace stripPrefix, ""
 
       file.path = file.path.replace /\.cson$/, ".js"
+
+      content = JSON.stringify CSON.parseSync content
 
       done util.format(template, fixtureName, content)
 
