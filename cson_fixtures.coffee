@@ -7,15 +7,16 @@ module.exports = ( ->
 
   createCsonFixturesPreprocessor = (basePath, config={}) ->
     util = require "util"
-    CSON = require "cson"
+    CSON = require "cson-safe"
 
-    stripPrefix = ///^#{config.stripPrefix || ""}///
-    prependPrefix = config.prependPrefix || ""
+    stripPrefix = ///^#{config.stripPrefix or ""}///
+    stripExtension = ///.#{config.extension or "cson"}$///
+    prependPrefix = config.prependPrefix or ""
 
     (content, file, done) ->
       fixtureName = file.originalPath
           .replace "#{basePath}/", ""
-          .replace /\.cson$/, ""
+          .replace stripExtension, ""
 
       # Set the template
       template = getTemplate config.variableName
@@ -23,9 +24,9 @@ module.exports = ( ->
       # Update the fixture name
       fixtureName = prependPrefix + fixtureName.replace stripPrefix, ""
 
-      file.path = file.path.replace /\.cson$/, ".js"
+      file.path = file.path.replace stripExtension, ".js"
 
-      content = JSON.stringify CSON.parseSync content
+      content = JSON.stringify CSON.parse content
 
       done util.format(template, fixtureName, content)
 
