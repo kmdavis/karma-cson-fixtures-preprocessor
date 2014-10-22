@@ -35,10 +35,10 @@ module.exports = (config) ->
 
 ## How it works
 
-Preprocessor requires .json files and converts them into .js files by storing json data as javascript objects under `__fixtures__` namespace.
+Preprocessor requires .cson files and converts them into .js files by storing json data as javascript objects under `__fixtures__` namespace.
 
 the following file:
-`./fixtures/test.json`
+`./fixtures/test.cson`
 ```coffee
 {
     a: "test"
