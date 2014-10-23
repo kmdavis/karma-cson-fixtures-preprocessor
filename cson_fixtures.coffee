@@ -30,13 +30,13 @@ createCsonFixturesPreprocessor = (logger, basePath, config = {}) ->
     try
       content = JSON.stringify CSON.parse content
     catch error
-      throw Error("in #{file.originalPath}\n#{error.toString()}")
+      throw Error "in #{file.originalPath}\n#{error.toString()}"
 
-    done util.format(template, fixtureName, content)
+    done util.format( template, fixtureName, content )
 
 createCsonFixturesPreprocessor.$inject = [
   "logger"
-  "config.basePath",
+  "config.basePath"
   "config.csonFixturesPreprocessor"
 ]
 
